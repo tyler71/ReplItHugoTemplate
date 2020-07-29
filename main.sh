@@ -15,16 +15,16 @@ DEV=true
 # URL=https://example.com
 URL="https://${REPL_SLUG}.${REPL_OWNER}.repl.co"
 
-
-source ./config/setup/install_deps.sh
-source ./config/setup/init.sh
-
 if [ "$USE_EXTENDED" = true ] \
 && [ -d site ]; then
     cd site
     export PATH="$PATH:$(npm bin)"
     cd -
 fi
+
+source ./config/setup/install_deps.sh
+source ./config/setup/init.sh
+
 
 if [ "$DEV" = true ]; then
   (

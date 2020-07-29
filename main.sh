@@ -19,7 +19,7 @@ if [ "$USE_EXTENDED" = true ] \
 && [ -d site ]; then
     cd site
     export PATH="$PATH:$(npm bin)"
-    cd -
+    cd - &> /dev/null
 fi
 
 source ./config/setup/install_deps.sh

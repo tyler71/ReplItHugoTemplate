@@ -7,27 +7,30 @@ BIN_DIR="/home/runner/.apt/usr/bin"
 
 if ! command -v hugo &> /dev/null; then
   (
+    echo Installing hugo
     mkdir -p "$BIN_DIR"
     cd "$BIN_DIR"
-    echo Installing hugo
     wget --quiet "$HUGO_FILE" -O - | tar -zxf - hugo
-  )
+  ) &
 fi
 
 if ! command -v caddy &> /dev/null; then
   (
+    echo Installing caddy
     mkdir -p "$BIN_DIR"
     cd "$BIN_DIR"
-    echo Installing caddy
     wget --quiet "$CADDY_FILE" -O - | tar -zxf - caddy
-  )
+  ) &
 fi
 
 if [ "$USE_EXTENDED" = true ] \
 && ! command -v postcss &> /dev/null \
 && [ -d site ]; then
   (
+    echo Installing node modules
     cd site \
     && npm install postcss-cli 
-  )
+  ) &
 fi
+
+wait

@@ -14,7 +14,7 @@ if [ ! -d site ]; then
       cd site
       git init
       git submodule add "$DEMO_THEME_URL" themes/"$DEMO_THEME_LOCATION"
-      rm config.toml; cp "themes/$DEMO_THEME_CONFIG" ./
+      rm config.toml; cp "themes/$DEMO_THEME_CONFIG" .
     )
   fi
   if [ "$USE_EXTENDED" = true ]; then
